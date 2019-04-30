@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <script>p5.min.js</script>
@@ -6,8 +5,8 @@
 </head>
 <body>
 <h1 id="gotgeo"></h1>
-<h1 id="lat"></h1>
-<h1 id="lon"></h1>
+<h1 id="distance"></h1>
+<h1 id="locAvail"></h1>
 
 <script>
 var $ = document;
@@ -33,6 +32,9 @@ function positionPing(position){
   mylon = positon.longitude;
   distance = calcGeoDistance(mylat,mylon,trelat,trelon);
   $.getElementById("distance").innerHTML = distance;
+	if (distance < 0.05) {
+		$.getElementById("locAvail").innerHTML = "located";
+	}
 }
 </script>
 </body>
