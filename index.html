@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <script>p5.min.js</script>
@@ -11,11 +10,11 @@
 
 <script>
 var $ = document;
-var dista;
+var distance;
 var mylat;
 var mylon;
-var trelat = 21.310222;
-var trelon = -157.837545;
+var trelat = 21.311285;
+var trelon = -157.837918;
 function setup(){
 	if(geoCheck() == true){
 	  $.getElementById("gotgeo").innerHTML = "geolocation avaliable";
@@ -25,14 +24,18 @@ function setup(){
 	  $.getElementById("gotgeo").innerHTML = "geolocation unavaliable";
 	}
 	intervalCurrentPosition(positionPing,1000);
+	enableLightAccuracy: true;
 }
 function positionPing(position){
   mylat = position.latitude;
   mylon = positon.longitude;
   distance = calcGeoDistance(mylat,mylon,trelat,trelon);
-  $.getElementById("distance").innerHTML = distance;
-	if (distance < 0.05) {
+  $.getElementById("distance").innerHTML = distance.toFixed(5);
+	if (distance < 0.01) {
 		$.getElementById("locAvail").innerHTML = "located";
+	}
+	else{
+	  $.getElementById("locAvail").innerHTML = "...";
 	}
 }
 </script>
