@@ -31,7 +31,7 @@ function positionPing(position){
   mylon = positon.longitude;
   distance = calcGeoDistance(mylat,mylon,trelat,trelon);
   $.getElementById("distance").innerHTML = distance.toFixed(5);
-	if (distance < 0.01) {
+	if (distance < 0.009) {
 		$.getElementById("locAvail").innerHTML = "located";
 	}
 	else{
